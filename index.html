@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        #background-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform-origin: top left;
+            object-fit: cover;
+            min-height: 100vh;
+            z-index: 1;
+        }
+
+        #overlay-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            min-height: 100vh;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: fall linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img id="background-image" src="https://a.imgfoto.host/2025/03/17/fap.png" alt="Background Image">
+    <img id="overlay-image" src="https://a.imgfoto.host/2025/03/17/FAPP.png" alt="Overlay Image">
+
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            document.body.appendChild(snowflake);
+
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+
+            const size = Math.random() * 2.5 + 2.5;
+            snowflake.style.width = size + 'px';
+            snowflake.style.height = size + 'px';
+
+            const animationDuration = Math.random() * 5 + 5;
+            snowflake.style.animationDuration = animationDuration + 's';
+
+            const animationDelay = Math.random() * 5;
+            snowflake.style.animationDelay = -animationDelay + 's';
+
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }
+
+        // Создаем снежинки с интервалом
+        setInterval(createSnowflake, 200);
+
+        // Убрана функция replaceImages и связанный с ней код
+    </script>
+</body>
+</html>
+
